@@ -10,6 +10,7 @@ class Co2DosingPump: public Actuator {
 private :
 	byte _pin;
 	uint8_t _mlPerMinute;
+
 public :
 	Co2DosingPump(byte pin);
 
@@ -20,6 +21,6 @@ public :
 	void justDoIt(double unit = 0);
 
 
-}
+};
 
 #endif

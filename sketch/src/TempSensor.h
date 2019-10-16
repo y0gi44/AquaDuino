@@ -6,18 +6,23 @@
 #include <DallasTemperature.h>
 
 
-class TempSensor : public Sensor
-{
-  public:
+class TempSensor : public Sensor {
+private:
+    DallasTemperature * _dallas;
+    DeviceAddress * _sensorAddress;
+    double _currentValue;
+
+public:
   TempSensor(DallasTemperature * dallas, DeviceAddress * address);
   TempSensor(DallasTemperature * dallas, DeviceAddress * address, uint8_t dzId, String desc);
+  ~TempSensor() {};
 
-    
+  void refreshSensor();
+
   double read();
-    
-  private:
-    DallasTemperature * _dallas;   
-    DeviceAddress * _sensorAddress;
+
+  void setPower(bool b){};
+
 };
 
 #endif

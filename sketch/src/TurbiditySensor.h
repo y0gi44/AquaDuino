@@ -4,15 +4,21 @@
 #include "Sensor.h"
 
 class TurbiditySensor : public Sensor {
-    public:
-        TurbiditySensor( byte userPin ) ;
-        TurbiditySensor( byte userPin, uint8_t idDz, String desc ) ;
-        //read function must be implemented
-        virtual double read(); 
-        
-    private:
-        byte _pin;
-       
+
+private:
+	byte _pin;
+	double _currentValue;
+
+public:
+	TurbiditySensor( byte userPin ) ;
+	TurbiditySensor( byte userPin, uint8_t idDz, String desc ) ;
+	~TurbiditySensor(){};
+
+	//read function must be implemented
+	double read();
+	void refreshSensor();
+
+	void setPower(bool b){};
 };
 
 

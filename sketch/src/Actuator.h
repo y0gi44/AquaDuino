@@ -7,7 +7,7 @@ protected:
 	String _desc;
 	String _unit;
 	double lastCommand;
-	Date
+
 
 public:
 	//initialize the actuator

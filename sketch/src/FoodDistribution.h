@@ -16,6 +16,6 @@ public :
 
 	void justDoIt(double unit = 0);
 
-}
+};
 
 #endif

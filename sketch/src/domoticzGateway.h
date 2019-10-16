@@ -7,13 +7,18 @@
 
 class DomoticzGateway {
 
+private:
+    IPAddress _dzServerHost;
+    unsigned int _dzServerPort;
+
 public:
 	DomoticzGateway(){}
 	DomoticzGateway(IPAddress address, unsigned int domoticzPort);
 	void notifyDomoticz(int idx, int value);
-	void notifyDomoticz(const Sensor * s);
+    void notifyDomoticz(int idx, double value);
+    void notifyDomoticz(const Sensor * s);
 
-	const IPAddress& getDzServerHost() const {
+	IPAddress getDzServerHost() const {
 		return _dzServerHost;
 	}
 
@@ -29,16 +34,5 @@ public:
 		_dzServerPort = dzServerPort;
 	}
 
-class DomoticzGateway
-{
-  public:
-    DomoticzGateway(IPAddress address, unsigned int domoticzPort);
-    void notifyDomoticz(int idx, double value);
-    
-    
-  private:
-    IPAddress _dzSevrerHost;
-    unsigned int _dzSevrerPort;
 };
-
 #endif

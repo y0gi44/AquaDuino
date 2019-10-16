@@ -2,8 +2,12 @@
 
 void pressbutton(byte pin);
 
-FoodDistributor::FoodDistributor(byte pinPower, byte pinDistribute) :
-		_pinPwr(pinPower), _pinDistribute(pinDistribute), _unit("time") {
+FoodDistributor::FoodDistributor(byte pinPower, byte pinDistribute) {
+
+	this->_pinPwr =pinPower;
+	this->_pinDistribute = pinDistribute;
+	this->_unit = "time";
+
 	pinMode(_pinPwr, OUTPUT);
 	pinMode(_pinDistribute, OUTPUT);
 	digitalWrite(pinPower, LOW);

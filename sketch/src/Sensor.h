@@ -16,6 +16,9 @@ protected:
 	String _unitReadValue;
 
 public:
+
+	virtual ~Sensor() = 0;
+
 	//initialize the sensor
 	inline virtual void begin() { /*nothing*/
 	}
@@ -27,9 +30,7 @@ public:
 	//this is called a pure virtual function
 	virtual double read() = 0;
 
-	inline void setPower(bool b) {
-	}
-	;
+	inline virtual void setPower(bool b) = 0;
 
 	uint8_t getDzIdx() const {
 		return _dzIdx;

@@ -1,16 +1,16 @@
 #include "PhSensor.h"
 
 PhSensor::PhSensor(byte userPin) {
-	_pin = userPin;
+	this->_pin = userPin;
 }
 
 PhSensor::PhSensor(byte userPin, uint8_t idDz, String desc) {
-	this(userPin);
-	_desc = desc;
-	_dzIdx = idDz;
+	this->_pin = userPin;
+	this->_desc = desc;
+	this->_dzIdx = idDz;
 }
 
-double PhSensor::read() {
+void PhSensor::refreshSensor() {
 	int temp;
 
 	// récupération d'un échnatillon de n mesures
@@ -35,8 +35,11 @@ double PhSensor::read() {
 		avgValue += _buf[i];
 	}
 	double phValue = (double) avgValue * 5.0 / 1024 / (NB_SAMPLES - 4); //convert the analog into millivolt
-	phValue = 3.5 * phValue;               //convert the millivolt into pH value
+	this->_currentValue = 3.5 * phValue;   //convert the millivolt into pH value
 
-	return phValue;
+}
+
+double PhSensor::read() {
+	return this->_currentValue;
 }
 

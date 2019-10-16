@@ -8,22 +8,18 @@ TempSensor::TempSensor(DallasTemperature * dallas, DeviceAddress * address){
 }
 
 TempSensor::TempSensor(DallasTemperature * dallas, DeviceAddress * address, uint8_t idDz, String desc){
-    this(dallas, address);
-    _desc = desc;
-    _dzIdx = idDz;
+    this->_dallas = dallas;
+    this->_sensorAddress = address;
+    this->_unitReadValue = "°C";
+    this->_desc = desc;
+    this->_dzIdx = idDz;
 }
-  
+
+void TempSensor::refreshSensor(){
+	this->_currentValue = _dallas->getTempC(*_sensorAddress);
+}
+
 double TempSensor::read(){
-  double tempC = _dallas->getTempC(*_sensorAddress);
-  if (tempC == -127.00) 
-  {
-    Serial.println("Error getting temperature  ");
-  } 
-  else
-  {
-    Serial.print("Temp C: ");
-    Serial.println(tempC);
-  }
-   return tempC;
+   return this->_currentValue;
 }
 

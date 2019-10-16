@@ -4,6 +4,7 @@
 #include "PhSensor.h"
 #include "TempSensor.h"
 #include "TurbiditySensor.h"
+#include "TdsSensor.h"
 
 #include <OneWire.h>
 #include <DallasTemperature.h>
@@ -18,7 +19,7 @@ const int domoticzPort = 8080;
 /** Config des Sondes de température et du bus One-Wire   **/
 #define ONE_WIRE_BUS 30
 #define TEMPERATURE_PRECISION 12
-OneWire  ds(ONE_WIRE_BUS);  // on pin 30 (a 4.7K resistor is necessary)
+OneWire ds(ONE_WIRE_BUS);  // on pin 30 (a 4.7K resistor is necessary)
 DallasTemperature sensors(&ds);
 // Définition des adresses des sondes One Wire
 DeviceAddress ProbeT1 = { 0x28, 0xFF, 0x9C, 0xD6, 0x92, 0x16, 0x04, 0x96 }; 
@@ -36,6 +37,9 @@ TurbiditySensor Turbidity1(TURBIDITY_PIN);
 #define PH_PIN A14
 PhSensor Ph1(PH_PIN);
 
+/** Sonde TDS **/
+#define TDS_PIN A9
+TdsSensor tds(TDS_PIN);
 
 
 

@@ -1,7 +1,8 @@
 #include "Co2DosingPump.h"
 
-Co2DosingPump::Co2DosingPump(byte pin) :
-		_pin(pin), _unit("ml") {
+Co2DosingPump::Co2DosingPump(byte pin)  {
+	this->_pin = pin;
+	this->_unit = "ml";
 	_mlPerMinute = 60;
 	pinMode(_pin, OUTPUT);
 	digitalWrite(_pin, LOW);

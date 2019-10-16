@@ -239,8 +239,7 @@ void uptime(char * dest)
 }
 
 // Fonction de formatage de l'uptime
-void uptime(unsigned long timestamp, char * dest)
-{
+void uptime(unsigned long timestamp, char * dest) {
  int days=0;
  int hours=0;
  int mins=0;
@@ -255,6 +254,7 @@ void uptime(unsigned long timestamp, char * dest)
  //Display results
 
  sprintf(dest, "%02d days %02d:%02d:%02d", days, hours, mins, secs);
+
 }
 
 

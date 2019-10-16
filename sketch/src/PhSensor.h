@@ -6,16 +6,21 @@
 #define NB_SAMPLES 20 
 
 class PhSensor : public Sensor {
-    public:
+private:
+	byte _pin;
+	int _buf[NB_SAMPLES];
+	double _currentValue;
+
+public:
     PhSensor( byte userPin ) ;
     PhSensor( byte userPin, uint8_t idDz, String desc ) ;
-        //read function must be implemented
-        virtual double read(); 
-        
-    private:
-        byte _pin;
-        int _buf[NB_SAMPLES];
-        
+    ~PhSensor(){};
+
+	//read function must be implemented
+	double read();
+	void refreshSensor();
+	void setPower(bool b){};
+
 };
 
 
