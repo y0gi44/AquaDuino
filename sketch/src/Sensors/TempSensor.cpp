@@ -18,8 +18,3 @@ TempSensor::TempSensor(DallasTemperature * dallas, DeviceAddress * address, uint
 void TempSensor::refreshSensor(){
 	this->_currentValue = _dallas->getTempC(*_sensorAddress);
 }
-
-double TempSensor::read(){
-   return this->_currentValue;
-}
-

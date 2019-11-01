@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 #include <UIPEthernet.h>
-#include "Sensor.h"
+#include "Sensors/Sensor.h"
 
 class DomoticzGateway {
 

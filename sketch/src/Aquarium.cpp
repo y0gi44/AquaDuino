@@ -41,6 +41,6 @@ void Aquarium::refreshSensors() {
 
 	//Extinction des capteurs
 	for (uint8_t i = 0; i < this->_nbSensors; i++) {
-		this->_tabSensors[i]->setPower(POWER_ON);
+		this->_tabSensors[i]->setPower(POWER_OFF);
 	}
 }

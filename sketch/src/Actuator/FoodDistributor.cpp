@@ -1,4 +1,4 @@
-#include "FoodDistribution.h"
+#include "FoodDistributor.h"
 
 void pressbutton(byte pin);
 
@@ -14,6 +14,20 @@ FoodDistributor::FoodDistributor(byte pinPower, byte pinDistribute) {
 	digitalWrite(_pinDistribute, LOW);
 }
 
+void FoodDistributor::setOn() {
+	// allumage du distributeur
+	pressbutton(_pinPwr);
+	delay(300);
+}
+
+void FoodDistributor::setOff() {
+
+	// allumage du distributeur
+	pressbutton(_pinPwr);
+	delay(300);
+}
+
+
 void FoodDistributor::justDoIt(double unit) {
 
 	// allumage du distributeur
@@ -23,7 +37,7 @@ void FoodDistributor::justDoIt(double unit) {
 	pressbutton(_pinDistribute);
 	delay(5000);
 
-	// extinction
+	// extinction du distributeur
 	pressbutton(_pinPwr);
 }
 

@@ -17,9 +17,7 @@ public:
     ~PhSensor(){};
 
 	//read function must be implemented
-	double read();
 	void refreshSensor();
-	void setPower(bool b){};
 
 };
 

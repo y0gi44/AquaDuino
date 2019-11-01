@@ -1,8 +1,8 @@
 #include "LevelSensor.h"
 
 /* Constantes pour les broches */
-const byte TRIGGER_PIN = 3; // Broche TRIGGER
-const byte ECHO_PIN = 2;    // Broche ECHO
+//const byte TRIGGER_PIN = 3; // Broche TRIGGER
+//const byte ECHO_PIN = 2;    // Broche ECHO
  
 /* Constantes pour le timeout */
 const unsigned long MEASURE_TIMEOUT = 25000UL; // 25ms = ~8m à 340m/s
@@ -12,10 +12,10 @@ const float SOUND_SPEED = 340.0 / 1000;
 
 
 
-LevelSensor::LevelSensor(int pinEcho, int pinTrigger, int nbMillimeterMax ){
+LevelSensor::LevelSensor(int pinEcho, int pinTrigger){
   _pinEcho = pinEcho,
   _pinTrigger = pinTrigger;
-  _nbMillimeterMax = nbMillimeterMax;
+  this->_unitReadValue = "mm";
 }
 
 void LevelSensor::init(){
@@ -25,13 +25,8 @@ void LevelSensor::init(){
   pinMode(this->_pinEcho, INPUT);
 }
 
-void LevelSensor::powerOff(){
-}
 
-void LevelSensor::powerUp(){
-}
-
-int LevelSensor::getRawValue(){
+void LevelSensor::refreshSensor(){
   int lvl = 0;
 
 /* 1. Lance une mesure de distance en envoyant une impulsion HIGH de 10µs sur la broche TRIGGER */
@@ -43,12 +38,7 @@ int LevelSensor::getRawValue(){
   long measure = pulseIn(this->_pinEcho, HIGH, MEASURE_TIMEOUT);
    
   /* 3. Calcul la distance à partir du temps mesuré */
-  float distance_mm = measure / 2.0 * SOUND_SPEED;
+  this->_currentValue = measure / 2.0 * SOUND_SPEED;
   
-  return distance_mm;
-}
-
-double LevelSensor::getPctValue(){
-  return  (this->getRawValue() * 100) / _nbMillimeterMax;
 }
 

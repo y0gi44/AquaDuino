@@ -2,6 +2,7 @@
 
 PhSensor::PhSensor(byte userPin) {
 	this->_pin = userPin;
+	this->_unitReadValue = "pH";
 }
 
 PhSensor::PhSensor(byte userPin, uint8_t idDz, String desc) {
@@ -38,8 +39,3 @@ void PhSensor::refreshSensor() {
 	this->_currentValue = 3.5 * phValue;   //convert the millivolt into pH value
 
 }
-
-double PhSensor::read() {
-	return this->_currentValue;
-}
-

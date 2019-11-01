@@ -9,16 +9,13 @@ class TdsSensor : public Sensor {
 private:
 	byte _pin;
 	GravityTDS _gravityTds;
-	double _currentValue;
 
 public:
 	TdsSensor( byte userPin ) ;
 	TdsSensor( byte userPin, uint8_t idDz, String desc ) ;
 	~TdsSensor(){};
 
-    double read();
     void refreshSensor();
-	void setPower(bool b){};
 
 
 };

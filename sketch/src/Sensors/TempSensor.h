@@ -18,11 +18,6 @@ public:
   ~TempSensor() {};
 
   void refreshSensor();
-
-  double read();
-
-  void setPower(bool b){};
-
 };
 
 #endif

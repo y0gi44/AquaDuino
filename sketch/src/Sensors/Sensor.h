@@ -14,24 +14,24 @@ protected:
 	String _desc;
 	String _shortDesc;
 	String _unitReadValue;
+	double _currentValue;
 
 public:
 
-	virtual ~Sensor() = 0;
+	virtual ~Sensor() {}
 
 	//initialize the sensor
-	inline virtual void begin() { /*nothing*/
-	}
-	;
+	inline virtual void init() { /* ne fait rien par défaut */ }	;
 
-	//read function must be implemented
+	//Fonction virtuelle de rafraichissement de la valeur du capteur, mise à jour de la variable _currentValue
 	virtual void refreshSensor() = 0;
 
-	//this is called a pure virtual function
-	virtual double read() = 0;
+	//accesseur à la valeur courante
+	double read() { return this->_currentValue;}
 
-	inline virtual void setPower(bool b) = 0;
+	inline virtual void setPower(bool b) {};
 
+	/* partie getter et setter de paramètre domoticz */
 	uint8_t getDzIdx() const {
 		return _dzIdx;
 	}
@@ -39,6 +39,7 @@ public:
 		_dzIdx = dzIdx;
 	}
 
+	/* partie getter et setter de paramètre générique description, short desc,  unité de mesure */
 	const String& getDesc() const {
 		return _desc;
 	}

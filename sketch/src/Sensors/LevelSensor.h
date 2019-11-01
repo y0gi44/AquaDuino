@@ -2,17 +2,16 @@
 #define LevelSensor_h
 
 #include "Arduino.h"
+#include "Sensor.h"
 #define MAX_PIN 15
 
-class LevelSensor
-{
+class LevelSensor : public Sensor {
+
   public:
-    LevelSensor(int pinEcho, int pinTrigger, int nbMillimeterMax);
-    void powerOff();
-    void powerUp();
+    LevelSensor(int pinEcho, int pinTrigger);
     void init();
-    int getRawValue();
-    double getPctValue();
+
+	void refreshSensor();
     
   private:
     int _pinEcho;   // pushbutton connected to digital pin 7

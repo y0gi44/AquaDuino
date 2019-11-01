@@ -31,7 +31,3 @@ void TdsSensor::refreshSensor(){
 	this->_currentValue = _gravityTds.getTdsValue(); ;
 }
 
-double TdsSensor::read() {
-	return this->_currentValue;
-}
-

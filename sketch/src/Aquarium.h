@@ -8,16 +8,15 @@
 #ifndef SRC_AQUARIUM_H_
 #define SRC_AQUARIUM_H_
 
-#include "Sensor.h"
-#include "Actuator.h"
+#include "Sensors/Sensor.h"
+#include "Actuator/Actuator.h"
 
 #define MAX_SENSORS 10
 #define MAX_ACTUATOR 10
 
-
 class Aquarium {
 
-private :
+private:
 	Sensor * _tabSensors[MAX_SENSORS];
 	uint8_t _nbSensors;
 
@@ -40,6 +39,15 @@ public:
 	const Sensor* getSensors(uint8_t id) const {
 		return _tabSensors[id];
 	}
+
+	uint8_t getNbActuator() const {
+		return _nbActuators;
+	}
+
+	const Actuator* getActuator(uint8_t id) const {
+		return _tabActuator[id];
+	}
+
 };
 
 #endif /* SRC_AQUARIUM_H_ */

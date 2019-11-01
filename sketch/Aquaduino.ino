@@ -2,6 +2,7 @@
 #include "src/domoticzGateway.h"
 #include <UIPEthernet.h>
 #include "src/aquaConfig.h"
+//#include "./src/Aquarium.h"
 
 
 #define MAX_HTTP_BUF_SIZE 100
@@ -168,7 +169,7 @@ void loop() {
 
 
 // renvoyer Http OK sur le client
-void copy_response(EthernetClient & client, char * response){
+void copy_response(EthernetClient & client, const char * response){
   int len = strlen_P(response);
   for (int k = 0; k < len; k++)
   {
